@@ -1,7 +1,8 @@
 const product = [
   {
     id: 0,
-    image: "image/gg-1.jpg",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXUVXERm3yWgAa9s5uAIG2et2PtD1mM-1n6g&s",
     title: "Z Flip Foldable Mobile",
     price: 120,
   },
@@ -24,6 +25,7 @@ const product = [
     price: 100,
   },
 ];
+
 const categories = [
   ...new Set(
     product.map((item) => {
@@ -31,6 +33,7 @@ const categories = [
     })
   ),
 ];
+
 let i = 0;
 document.getElementById("root").innerHTML = categories
   .map((item) => {
@@ -40,30 +43,35 @@ document.getElementById("root").innerHTML = categories
           <div class='img-box'>
               <img class='images' src=${image}></img>
           </div>
-      <div class='bottom'>
-      <p>${title}</p>
-      <h2>$ ${price}.00</h2>` +
+          <div class='bottom'>
+            <p>${title}</p>
+            <h2>$ ${price}.00</h2>` +
       "<button onclick='addtocart(" +
       i++ +
       ")'>Add to cart</button>" +
       `</div>
-      </div>`
+          </div>`
     );
   })
   .join("");
+
 var cart = [];
 function addtocart(a) {
   cart.push({ ...categories[a] });
   displaycart();
 }
+
 function delElement(a) {
   cart.splice(a, 1);
   displaycart();
 }
+
 function displaycart() {
   let j = 0,
     total = 0;
+
   document.getElementById("count").innerHTML = cart.length;
+
   if (cart.length == 0) {
     document.getElementById("cartItem").innerHTML = "Your cart is empty";
     document.getElementById("total").innerHTML = "$ " + 0 + ".00";
